@@ -1,3 +1,6 @@
+import random
+import string
+
 
 class Galaxy:
 
@@ -55,29 +58,19 @@ class Galaxy:
             return self.galaxy_name != other
         return NotImplemented
 
+    def random_galaxies_name_generator(max_number = 100):
+        while True:
+            letters = ''.join(random.choices(string.ascii_uppercase, k = 3))
+            number = random.randint(5, max_number)
+            name = f"{letters}{number:03}"
+            yield name
+
+
 if __name__ == '__main__':
 
-    galaxies = [
-        "Milky Way",
-        "Andromeda",
-        "Triangulum",
-        "Whirlpool",
-        "Sombrero",
-        "Pinwheel",
-        "Messier 87",
-        "Centaurus A",
-        "Large Magellanic Cloud",
-        "Small Magellanic Cloud",
-        "NGC 1300",
-        "NGC 6744",
-        "IC 1101",
-        "Messier 81",
-        "Messier 82",
-        "Cartwheel Galaxy",
-        "NGC 253",
-        "NGC 4038",
-        "NGC 4039",
-        "NGC 4414"
-    ]
+    galaxies_names = Galaxy.random_galaxies_name_generator()
 
-    print(Galaxy(galaxies[1]))
+    for _ in range(100):
+        print(next(galaxies_names))
+
+    print(type(galaxies_names))
