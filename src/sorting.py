@@ -1,5 +1,3 @@
-from src.galaxy import Galaxy
-
 def my_mutating_sort(items: list):
     return items.sort()
 
